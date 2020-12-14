@@ -15,8 +15,9 @@ services:
     # ホストのディレクトリ:コンテナのディレクトリ
     volumes:
       # /docker-entrypoint-initdb.dはコンテナ初回起動時に実行されるスクリプトを置く場所
-      - ./DB/init/:/docker-entrypoint-initdb.d
-      # /Users/${USER}/Volumes/todo/postgres:/var/lib/postgresql/data
+      - ./postgresql/init/:/docker-entrypoint-initdb.d
+      # /var/lib/postgresql/dataはpostgresqlのデータが保存されている場所
+      /Users/${USER}/python/todo/postgres:/var/lib/postgresql/data
 
     # コンテナの環境変数設定
     environment: 
