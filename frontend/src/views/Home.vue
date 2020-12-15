@@ -10,7 +10,10 @@
 </template>
 
 <script>
-const axios = require('axios').create()
+const axios =
+  process.env.VUE_APP_REST_SERVER === 'json-mock'
+    ? require('axios').create({ baseURL: 'http://localhost:3000' })
+    : require('axios').create()
 export default {
   name: 'home',
   data () {
