@@ -4,9 +4,9 @@ from models import get_all
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
-class Spam(Resource):
+class Task(Resource):
   def get(self):
-    return [{'id': x.pk, 'name': x.name, 'note': x.note} for x in get_all()]
+    return [{'id': x.id, 'name': x.name, 'status': x.status, 'limit': x.limit, 'detail': x.detail} for x in get_all()]
 
 api = Api(api_bp)
-api.add_resource(Spam, '/spam')
+api.add_resource(Task, '/Task')
