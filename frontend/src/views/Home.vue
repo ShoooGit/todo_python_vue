@@ -1,10 +1,11 @@
 <template>
   <div class="home">
-    <h1>This is a home page</h1>
+    <h1>Todoリスト</h1>
     <el-table class="data-table" :data="tableData" stripe>
       <el-table-column prop="id" label="ID" width="180"></el-table-column>
       <el-table-column prop="name" label="名前" width="180"></el-table-column>
-      <el-table-column prop="note" label="備考"></el-table-column>
+      <el-table-column prop="status" label="状態" width="180"></el-table-column>
+      <el-table-column prop="limit" label="期限"></el-table-column>
     </el-table>
   </div>
 </template>
@@ -26,7 +27,7 @@ export default {
   },
   methods: {
     updataTableData: async function () {
-      const response = await axios.get('/api/spam')
+      const response = await axios.get('/api/task')
       this.tableData = response.data
     }
   }
