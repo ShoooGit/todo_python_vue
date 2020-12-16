@@ -9,4 +9,4 @@ class Task(Resource):
     return [{'id': x.id, 'name': x.name, 'status': x.status, 'limit': x.limit, 'detail': x.detail} for x in get_all()]
 
 api = Api(api_bp)
-api.add_resource(Task, '/Task')
+api.add_resource(Task, '/task')
