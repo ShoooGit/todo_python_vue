@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 from api import api_bp
 from models import get_all, init_db, insert
-from datetime import datetime
 
 app = Flask(__name__, static_folder='../frontend/dist/static', template_folder='../frontend/dist')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://{user}:{password}@{host}/{name}'.format(**{
@@ -21,7 +20,6 @@ if __name__ == '__main__':
   with app.app_context():
     init_db(app)
     if not get_all():
-      insert('断捨離', 'Todo', datetime.date(2020, 12, 30), '不要なものを処分する')
-      insert('掃除', 'Doing', datetime.date(2020, 12, 20), '家を掃除する')
-      insert('買い物', 'Done', datetime.date(2020, 12, 10), '食料品を買う')
+      insert('foo', 'This is foo.')
+      insert('bar', 'This is bar.')
   app.run()
