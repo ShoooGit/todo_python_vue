@@ -47,7 +47,8 @@ export default {
   name: 'home',
   data () {
     return {
-      tableData: []
+      tableData: [],
+      activeName: 'all'
     }
   },
   mounted () {
@@ -67,7 +68,7 @@ export default {
   margin: auto;
 }
 .tab-zone {
-  width: 80%;
+  width: 60%;
   margin: auto;
 }
 </style>
