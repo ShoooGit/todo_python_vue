@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Todoリスト</h1>
-    <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tabs class="tab-zone" v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="All" name="all">
         <el-table class="data-table" :data="tableData" stripe>
           <el-table-column prop="id" label="ID" width="180"></el-table-column>
@@ -64,6 +64,9 @@ export default {
 
 <style scoped>
 .data-table {
+  margin: auto;
+}
+.tab-zone {
   width: 80%;
   margin: auto;
 }
