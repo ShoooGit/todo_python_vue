@@ -8,6 +8,8 @@
           <el-table-column prop="name" label="名前" width="180"></el-table-column>
           <el-table-column prop="status" label="状態" width="180"></el-table-column>
           <el-table-column prop="limit" label="期限"></el-table-column>
+          <el-table-column><i class="el-icon-edit"></i></el-table-column>
+          <el-table-column><i class="el-icon-delete"></i></el-table-column>
         </el-table>
       </el-tab-pane>
     </el-tabs>
