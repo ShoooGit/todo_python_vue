@@ -61,9 +61,15 @@ export default {
     updataTableData: async function () {
       const response = await axios.get('/api/task')
       this.tableDataAll = response.data
-      this.tableDataTodo.push(response.data[0])
-      this.tableDataDoing.push(response.data[1])
-      this.tableDataDone.push(response.data[2])
+      this.tableDataTodo = response.data.filter(
+        task => task.status === 'Todo'
+      )
+      this.tableDataDoing = response.data.filter(
+        task => task.status === 'Doing'
+      )
+      this.tableDataDone = response.data.filter(
+        task => task.status === 'Done'
+      )
     }
   }
 }
