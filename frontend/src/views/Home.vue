@@ -11,9 +11,11 @@
           <el-table-column prop="name" label="名前" width="180"></el-table-column>
           <el-table-column prop="status" label="状態" width="180"></el-table-column>
           <el-table-column prop="limit" label="期限"></el-table-column>
-          <el-table-column align="right">
-            <el-button class="el-icon-edit" size="mini" @click="handleEdit()"></el-button>
-            <el-button class="el-icon-delete" size="mini" @click="handleDelete()"></el-button>
+          <el-table-column align="right" class="el-icon-edit" size="mini">
+            <template slot-scope="scope">
+              <el-button class="el-icon-edit" size="mini" @click="handleEdit(scope.row)"></el-button>
+              <el-button class="el-icon-delete" size="mini" @click="handleDelete(scope.row)"></el-button>
+            </template>
           </el-table-column>
         </el-table>
       </el-tab-pane>
@@ -49,11 +51,13 @@ export default {
         { tabName: 'Done', data: this.tableData.filter(task => task.status === 'Done') }
       )
     },
-    handleEdit () {
+    handleEdit (row) {
       console.log('editボタンを押下')
+      console.log(JSON.stringify(row))
     },
-    handleDelete () {
+    handleDelete (row) {
       console.log('deleteボタンを押下')
+      console.log(JSON.stringify(row))
     }
 
   }
