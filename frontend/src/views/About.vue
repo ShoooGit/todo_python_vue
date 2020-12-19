@@ -3,12 +3,12 @@
     <!-- Form -->
     <el-button class="el-icon-circle-plus" size="mini" @click="dialogFormVisible = true"></el-button>
     <el-dialog title="タスク登録" :visible.sync="dialogFormVisible">
-      <el-form :model="form" class="form">
+      <el-form :model="formData" class="form">
         <el-form-item label="件名" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off" class="input"></el-input>
+          <el-input v-model="formData.name" autocomplete="off" class="input"></el-input>
         </el-form-item>
         <el-form-item label="状態" :label-width="formLabelWidth">
-          <el-select v-model="form.region" placeholder="タスクの状態を選択して下さい" class="input">
+          <el-select v-model="formData.status" placeholder="タスクの状態を選択して下さい" class="input">
             <el-option label="Todo" value="Todo"></el-option>
             <el-option label="Doing" value="Doing"></el-option>
             <el-option label="Done" value="Done"></el-option>
@@ -16,7 +16,7 @@
         </el-form-item>
         <el-form-item label="期限" :label-width="formLabelWidth">
           <el-date-picker
-            v-model="value"
+            v-model="formData.limit"
             type="date"
             placeholder="日付を選択して下さい"
             class="input">
@@ -27,13 +27,13 @@
             type="textarea"
             :autosize="{ minRows: 2, maxRows: 4}"
             placeholder="詳細を入力して下さい"
-            v-model="textarea">
+            v-model="formData.detail">
           </el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">キャンセル</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">登録</el-button>
+        <el-button type="primary" @click="submit; dialogFormVisible = false">登録</el-button>
       </span>
     </el-dialog>
   </div>
@@ -45,15 +45,11 @@ export default {
   data () {
     return {
       dialogFormVisible: false,
-      form: {
+      formData: {
         name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        status: '',
+        limit: '',
+        detail: ''
       },
       formLabelWidth: '120px',
       pickerOptions: {
@@ -80,9 +76,15 @@ export default {
             picker.$emit('pick', date)
           }
         }]
-      },
-      value: '',
-      textarea: ''
+      }
+    }
+  },
+  methods: {
+    submit: function () {
+      axios.post('/api/task', this.formData)
+        .then(response => {
+          console.log(response.data.results)
+        })
     }
   }
 }
