@@ -6,12 +6,13 @@
           <el-input v-model="form.name" autocomplete="off" class="input"></el-input>
         </el-form-item>
         <el-button @click="dialogFormVisible = false">キャンセル</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">登録</el-button>
+        <el-button type="primary" @click="submitData">登録</el-button>
       </el-form>
   </div>
 </template>
 
 <script>
+const axios = require('axios').create()
 export default {
   name: 'form',
   data () {
@@ -20,6 +21,14 @@ export default {
         name: ''
       },
       formLabelWidth: '120px'
+    }
+  },
+  methods: {
+    submitData: function () {
+      axios.post('/api/task', this.form)
+        .then(response => {
+          console.log(response.data.results)
+        })
     }
   }
 }

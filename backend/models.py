@@ -21,8 +21,13 @@ def init_db(app):
 def get_all():
     return Task.query.order_by(Task.id).all()
 
-def insert(name, status, limit, detail):
-    model = Task(name=name, status=status, limit=limit, detail=detail)
+# def insert(name, status, limit, detail):
+#     model = Task(name=name, status=status, limit=limit, detail=detail)
+#     db.session.add(model)
+#     db.session.commit()
+
+def insert(name):
+    model = Task(name=name, status="Todo", limit="2020-12-12", detail="詳細")
     db.session.add(model)
     db.session.commit()
 
