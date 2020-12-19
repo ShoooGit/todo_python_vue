@@ -19,7 +19,9 @@
             v-model="formData.limit"
             type="date"
             placeholder="日付を選択して下さい"
-            class="input">
+            class="input"
+            format="yyyy-MM-dd"
+            value-format="yyyy-MM-dd">
           </el-date-picker>
         </el-form-item>
         <el-form-item label="詳細" :label-width="formLabelWidth">
