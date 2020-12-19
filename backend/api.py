@@ -9,11 +9,14 @@ class Task(Resource):
     return [{'id': x.id, 'name': x.name, 'status': x.status, 'limit': x.limit} for x in get_all()]
 
   def post(self):
-    insert(request.json["name"].split())
-    result = {
-        "results": request.json["name"].split()
-    }
-    return result
+    insert(
+      request.json["name"],
+      request.json["status"],
+      request.json["limit"],
+      request.json["detail"]
+    )
+    name = request.json["name"]
+    return name
 
 api = Api(api_bp)
 api.add_resource(Task, '/task')

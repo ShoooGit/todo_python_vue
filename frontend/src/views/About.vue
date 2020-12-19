@@ -33,13 +33,14 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">キャンセル</el-button>
-        <el-button type="primary" @click="submit; dialogFormVisible = false">登録</el-button>
+        <el-button type="primary" @click="submit">登録</el-button>
       </span>
     </el-dialog>
   </div>
 </template>
 
 <script>
+const axios = require('axios').create()
 export default {
   name: 'about',
   data () {
@@ -51,6 +52,7 @@ export default {
         limit: '',
         detail: ''
       },
+      name: [],
       formLabelWidth: '120px',
       pickerOptions: {
         disabledDate (time) {
@@ -83,8 +85,9 @@ export default {
     submit: function () {
       axios.post('/api/task', this.formData)
         .then(response => {
-          console.log(response.data.results)
+          console.log(response.data)
         })
+      this.dialogFormVisible = false
     }
   }
 }
