@@ -58,6 +58,7 @@ export default {
     handleDelete (row) {
       console.log('deleteボタンを押下')
       console.log(JSON.stringify(row))
+      console.log(row.id)
     }
 
   }
