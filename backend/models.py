@@ -26,5 +26,7 @@ def insert(name, status, limit, detail):
     db.session.add(model)
     db.session.commit()
 
-def delete():
-    return Task.query.delete()
+def delete(id):
+    target = Task.query.get(id)
+    db.session.delete(target)
+    db.session.commit()

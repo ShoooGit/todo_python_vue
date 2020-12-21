@@ -58,7 +58,8 @@ export default {
     handleDelete (row) {
       console.log('deleteボタンを押下')
       console.log(JSON.stringify(row))
-      console.log(row.id)
+      // axios.delete('/api/task', JSON.stringify(row))
+      axios.delete('/api/task', { data: JSON.stringify(row) })
     }
 
   }
