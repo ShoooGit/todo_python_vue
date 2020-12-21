@@ -56,10 +56,39 @@ export default {
       console.log(JSON.stringify(row))
     },
     handleDelete (row) {
+      var i = 0
       axios.delete('/api/task', { data: JSON.stringify(row) })
-      this.updataTableData()
+      this.tableDatas[0].data.forEach(function (data, index) {
+        if (data.id === row.id) {
+          i = index
+        }
+      })
+      console.log(this.tableDatas[0].data)
+      this.tableDatas[0].data.splice(i, 1)
+      // switch (row.status) {
+      //   case 'Todo':
+      //     this.tableDatas[1].forEach(function (data, index) {
+      //       if (data.id === row.id) {
+      //         data.splice(index, 1)
+      //       }
+      //     })
+      //     break
+      //   case 'Doing':
+      //     this.tableDatas[2].forEach(function (data, index) {
+      //       if (data.id === row.id) {
+      //         data.splice(index, 1)
+      //       }
+      //     })
+      //     break
+      //   case 'Done':
+      //     this.tableDatas[3].forEach(function (data, index) {
+      //       if (data.id === row.id) {
+      //         data.splice(index, 1)
+      //       }
+      //     })
+      //     break
+      // }
     }
-
   }
 }
 </script>
