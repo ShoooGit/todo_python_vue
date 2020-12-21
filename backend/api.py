@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
 from flask_restful import Api, Resource
 from models import get_all, insert, delete
 
