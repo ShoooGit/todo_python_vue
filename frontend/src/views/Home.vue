@@ -32,8 +32,8 @@ export default {
   name: 'home',
   data () {
     return {
-      tableData: [],
-      tableDatas: [],
+      tableData: [],      // 各ステータスのデータ配列
+      tableDatas: [],     // 各ステータスのデータ配列が格納された配列
       activeName: 'All'
     }
   },
@@ -43,6 +43,7 @@ export default {
   methods: {
     updataTableData: async function () {
       const response = await axios.get('/api/task')
+      // DBから取得したデータを各ステータス用の配列に振り分け、その配列をtableDatasに追加する
       this.tableData = response.data
       this.tableDatas.push(
         { tabName: 'All', data: this.tableData },
@@ -56,8 +57,13 @@ export default {
       console.log(JSON.stringify(row))
     },
     handleDelete (row) {
-      var i = 0
+      // DB側のデータ削除
       axios.delete('/api/task', { data: JSON.stringify(row) })
+
+      // フロント側が保持しているデータを非同期で削除
+      var i = 0
+
+      // Allタブのデータを削除
       this.tableDatas[0].data.forEach(function (data, index) {
         if (data.id === row.id) {
           i = index
@@ -65,6 +71,7 @@ export default {
       })
       this.tableDatas[0].data.splice(i, 1)
 
+      // 各ステータスタブのデータを削除
       switch (row.status) {
         case 'Todo':
           this.tableDatas[1].data.forEach(function (data, index) {
