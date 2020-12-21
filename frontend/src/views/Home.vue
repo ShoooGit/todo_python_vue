@@ -63,31 +63,34 @@ export default {
           i = index
         }
       })
-      console.log(this.tableDatas[0].data)
       this.tableDatas[0].data.splice(i, 1)
-      // switch (row.status) {
-      //   case 'Todo':
-      //     this.tableDatas[1].forEach(function (data, index) {
-      //       if (data.id === row.id) {
-      //         data.splice(index, 1)
-      //       }
-      //     })
-      //     break
-      //   case 'Doing':
-      //     this.tableDatas[2].forEach(function (data, index) {
-      //       if (data.id === row.id) {
-      //         data.splice(index, 1)
-      //       }
-      //     })
-      //     break
-      //   case 'Done':
-      //     this.tableDatas[3].forEach(function (data, index) {
-      //       if (data.id === row.id) {
-      //         data.splice(index, 1)
-      //       }
-      //     })
-      //     break
-      // }
+
+      switch (row.status) {
+        case 'Todo':
+          this.tableDatas[1].data.forEach(function (data, index) {
+            if (data.id === row.id) {
+              i = index
+            }
+          })
+          this.tableDatas[1].data.splice(i, 1)
+          break
+        case 'Doing':
+          this.tableDatas[2].data.forEach(function (data, index) {
+            if (data.id === row.id) {
+              i = index
+            }
+          })
+          this.tableDatas[2].data.splice(i, 1)
+          break
+        case 'Done':
+          this.tableDatas[3].data.forEach(function (data, index) {
+            if (data.id === row.id) {
+              i = index
+            }
+          })
+          this.tableDatas[3].data.splice(i, 1)
+          break
+      }
     }
   }
 }
