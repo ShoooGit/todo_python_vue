@@ -54,7 +54,6 @@ export default {
         limit: '',
         detail: ''
       },
-      name: [],
       formLabelWidth: '120px',
       pickerOptions: {
         disabledDate (time) {
