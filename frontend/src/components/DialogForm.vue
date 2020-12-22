@@ -1,5 +1,5 @@
 <template>
-  <div class="dialog-form">
+  <div>
     <!-- Form -->
     <el-button class="el-icon-circle-plus" size="mini" @click="dialogFormVisible = true"></el-button>
     <el-dialog title="タスク登録" :visible.sync="dialogFormVisible">
@@ -101,5 +101,9 @@ export default {
 
 .input {
   width: 100%;
+}
+
+.el-icon-circle-plus {
+  color: ＃409EFF;
 }
 </style>

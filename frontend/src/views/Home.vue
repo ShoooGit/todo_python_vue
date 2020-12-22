@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <h1>Todoリスト</h1>
-    <DialogForm/>
+    <div class="form-button">
+      <DialogForm/>
+    </div>
     <el-tabs class="tab-zone" v-model="activeName">
       <el-tab-pane v-for="tableData in tableDatas" v-bind:key="tableData.tabName" v-bind:label="tableData.tabName" v-bind:name="tableData.tabName">
         <el-table class="data-table" :data=tableData.data stripe>
@@ -112,14 +114,11 @@ export default {
 .tab-zone {
   width: 60%;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 20px;
 }
-.icon {
+
+.form-button {
   width: 60%;
   margin: auto;
-}
-.el-icon-circle-plus {
-  float: right;
-  color: ＃409EFF;
 }
 </style>
