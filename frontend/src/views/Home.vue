@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>Todoリスト</h1>
+    <DialogForm/>
     <el-tabs class="tab-zone" v-model="activeName">
       <el-tab-pane v-for="tableData in tableDatas" v-bind:key="tableData.tabName" v-bind:label="tableData.tabName" v-bind:name="tableData.tabName">
         <el-table class="data-table" :data=tableData.data stripe>
@@ -21,11 +22,15 @@
 </template>
 
 <script>
+import DialogForm from '../components/DialogForm.vue'
 const axios =
   process.env.VUE_APP_REST_SERVER === 'json-mock'
     ? require('axios').create({ baseURL: 'http://localhost:3000' })
     : require('axios').create()
 export default {
+  components: {
+    DialogForm
+  },
   name: 'home',
   data () {
     return {
