@@ -16,10 +16,10 @@
         </el-form-item>
         <el-form-item label="期限" :label-width="formLabelWidth">
           <el-date-picker
+            class="input"
             v-model="formData.limit"
             type="date"
             placeholder="日付を選択して下さい"
-            class="input"
             format="yyyy-MM-dd"
             value-format="yyyy-MM-dd">
           </el-date-picker>
@@ -29,7 +29,8 @@
             type="textarea"
             :autosize="{ minRows: 2, maxRows: 4}"
             placeholder="詳細を入力して下さい"
-            v-model="formData.detail">
+            v-model="formData.detail"
+            class="input">
           </el-input>
         </el-form-item>
       </el-form>
@@ -101,9 +102,11 @@ export default {
 
 .input {
   width: 100%;
+  float: left;
 }
 
 .el-icon-circle-plus {
   color: ＃409EFF;
 }
+
 </style>

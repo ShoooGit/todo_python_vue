@@ -114,11 +114,12 @@ export default {
 .tab-zone {
   width: 60%;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 60px;
 }
 
 .form-button {
   width: 60%;
   margin: auto;
+  float: right;
 }
 </style>
