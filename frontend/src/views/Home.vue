@@ -11,9 +11,9 @@
           <el-table-column prop="name" label="件名" width="180"></el-table-column>
           <el-table-column prop="status" label="状態" width="180"></el-table-column>
           <el-table-column prop="limit" label="期限"></el-table-column>
-          <el-table-column align="right" class="el-icon-edit" size="mini">
+          <el-table-column align="right">
             <template slot-scope="scope">
-              <el-button class="el-icon-edit" size="mini" @click="handleEdit(scope.row)"></el-button>
+              <EditForm/>
               <el-button class="el-icon-delete" size="mini" @click="handleDelete(scope.row)"></el-button>
             </template>
           </el-table-column>
@@ -25,13 +25,15 @@
 
 <script>
 import DialogForm from '../components/DialogForm.vue'
+import EditForm from '../components/EditForm.vue'
 const axios =
   process.env.VUE_APP_REST_SERVER === 'json-mock'
     ? require('axios').create({ baseURL: 'http://localhost:3000' })
     : require('axios').create()
 export default {
   components: {
-    DialogForm
+    DialogForm,
+    EditForm
   },
   name: 'home',
   data () {
@@ -55,10 +57,6 @@ export default {
         { tabName: 'Doing', data: this.tableData.filter(task => task.status === 'Doing') },
         { tabName: 'Done', data: this.tableData.filter(task => task.status === 'Done') }
       )
-    },
-    handleEdit (row) {
-      console.log('editボタンを押下')
-      console.log(JSON.stringify(row))
     },
     handleDelete (row) {
       // DB側のデータ削除
