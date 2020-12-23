@@ -106,7 +106,7 @@ export default {
 }
 
 .el-icon-circle-plus {
-  color: ＃409EFF;
+  float: right;
 }
 
 </style>
