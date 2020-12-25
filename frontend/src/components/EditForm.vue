@@ -46,15 +46,15 @@
 const axios = require('axios').create()
 export default {
   name: 'edit-form',
-  props: { name: String },
+  props: { row: JSON },
   data () {
     return {
       dialogFormVisible: false,
       formData: {
-        name: this.name,
-        status: '',
-        limit: '',
-        detail: ''
+        name: this.row.name,
+        status: this.row.status,
+        limit: this.row.limit,
+        detail: this.row.detail
       },
       formLabelWidth: '120px',
       pickerOptions: {
