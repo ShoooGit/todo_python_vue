@@ -13,7 +13,7 @@
           <el-table-column prop="limit" label="期限"></el-table-column>
           <el-table-column align="right">
             <template slot-scope="scope">
-              <EditForm/>
+              <EditForm name="namename"><EditForm/>
               <el-button class="el-icon-delete" size="mini" @click="handleDelete(scope.row)"></el-button>
             </template>
           </el-table-column>

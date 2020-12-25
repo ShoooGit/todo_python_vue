@@ -46,11 +46,12 @@
 const axios = require('axios').create()
 export default {
   name: 'edit-form',
+  props: { name: String },
   data () {
     return {
       dialogFormVisible: false,
       formData: {
-        name: '',
+        name: this.name,
         status: '',
         limit: '',
         detail: ''
