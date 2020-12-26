@@ -32,5 +32,5 @@ def delete(id):
     db.session.commit()
 
 def update(id):
-    target = Task.query.get(id)
-    query.filter(Task.id == id).query.update({Task.name: target.name})
+    Task.query.filter(Task.id == id).update({Task.name: 'shuto'})
+    db.session.commit()

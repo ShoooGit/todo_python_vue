@@ -23,8 +23,7 @@ class Task(Resource):
     delete(req['id'])
 
   def put(self):
-    req = request.get_json(force=True)
-    update(req['id'])
+    update(request.json['id'])
 
 api = Api(api_bp)
 api.add_resource(Task, '/task')

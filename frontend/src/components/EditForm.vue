@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     submit: function () {
-      axios.put('/api/task', { data: JSON.stringify(this.formData) })
+      axios.put('/api/task', { id: this.row.id })
         .then(response => {
           console.log(response.data)
         })
