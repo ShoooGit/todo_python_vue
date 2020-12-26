@@ -23,6 +23,7 @@ class Task(Resource):
     delete(req['id'])
 
   def put(self):
+    req = request.get_json(force=True)
     update(req['id'])
 
 api = Api(api_bp)
