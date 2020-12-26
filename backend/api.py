@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_restful import Api, Resource
-from models import get_all, insert, delete
+from models import get_all, insert, delete, update
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -21,6 +21,9 @@ class Task(Resource):
   def delete(self):
     req = request.get_json(force=True)
     delete(req['id'])
+
+  def put(self):
+    update(req['id'])
 
 api = Api(api_bp)
 api.add_resource(Task, '/task')
