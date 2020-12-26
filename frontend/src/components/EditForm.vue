@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     submit: function () {
-      axios.put('/api/task', this.formData)
+      axios.put('/api/task', { data: JSON.stringify(this.formData) })
         .then(response => {
           console.log(response.data)
         })
