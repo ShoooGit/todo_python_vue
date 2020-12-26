@@ -51,6 +51,7 @@ export default {
     return {
       dialogFormVisible: false,
       formData: {
+        id: this.row.id,
         name: this.row.name,
         status: this.row.status,
         limit: this.row.limit,
